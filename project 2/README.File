@@ -1,0 +1,14 @@
+Tools & Technologies used 
+  - Docker
+  - Terraform
+  - Kubernets 
+  - Jenkins
+  - Aws 
+STEPS
+  1.Clone repo
+  2.Build Docker image
+  3.Push to DockerHub
+  4.Create infra using Terraform
+  5.Deploy using Kubernets
+  6.Setup Jenkins pipeline
+
