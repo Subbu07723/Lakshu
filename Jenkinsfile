@@ -7,9 +7,22 @@ pipeline {
 
     stages {
 
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+
         stage('Clone') {
             steps {
-                git 'https://github.com/Subbu07723/Lakshu.git'
+                git branch: 'main',
+                    url: 'https://github.com/Subbu07723/Lakshu.git'
+            }
+        }
+
+        stage('Verify Files') {
+            steps {
+                sh 'ls -la'
             }
         }
 
