@@ -1,21 +1,39 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE = "subbulakshmisenthilmurugan/trendapp"
+    }
+
     stages {
+
+        stage('Clone') {
+            steps {
+                git 'https://github.com/Subbu07723/Lakshu.git'
+            }
+        }
 
         stage('Build') {
             steps {
-                sh 'docker build -t my-app .'
+                sh 'docker build -t $IMAGE .'
             }
         }
 
-        stage('Run') {
+        stage('Login DockerHub') {
             steps {
-                sh 'docker run -d -p 3000:3000 my-app'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                    sh 'echo $PASS | docker login -u $USER --password-stdin'
+                }
             }
         }
 
-        stage('Deploy to K8s') {
+        stage('Push') {
+            steps {
+                sh 'docker push $IMAGE'
+            }
+        }
+
+        stage('Deploy to EKS') {
             steps {
                 sh 'kubectl apply -f deployment.yaml'
                 sh 'kubectl apply -f service.yaml'
