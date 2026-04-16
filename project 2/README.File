@@ -4,11 +4,26 @@ Tools & Technologies used
   - Kubernets 
   - Jenkins
   - Aws 
-STEPS
-  1.Clone repo
-  2.Build Docker image
-  3.Push to DockerHub
-  4.Create infra using Terraform
-  5.Deploy using Kubernets
-  6.Setup Jenkins pipeline
+
+Github repository : https://github.com/Subbu07723/Lakshu.git
+
+Project Workflow:
+      Clone the repository
+      Build Docker image
+      Push image to dockerhub
+      Create infrastructure using terraform
+      Deploy application using kubernetes
+      Setup jenkins pipeline for CI/CD
+
+Jenkins Pipeline:
+       Pulls code from Github
+       Build Docker image
+       Pushes images to Dockerhub
+       Deploys to kubernetes cluster
+Project structure:
+      Dockerfile
+      Jenkinsfile
+      Terraformfile
+      Kubernetes deployment.yaml
+      Kubernetes service.yaml
 
