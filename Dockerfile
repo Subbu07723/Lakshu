@@ -2,6 +2,11 @@ FROM node:18
 
 WORKDIR /app
 
-RUN echo "My app is running"
+COPY package*.json ./
+RUN npm install
 
-CMD ["node", "-e", "console.log('App started successfully')"]
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
